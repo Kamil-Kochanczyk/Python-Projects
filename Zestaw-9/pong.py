@@ -269,7 +269,11 @@ class GameScreen:
             pygame.draw.rect(screen, WHITE, self.player_right)
             pygame.draw.ellipse(screen, WHITE, self.ball)
         else:
-            game_result = self.font.render(f"Player {"left" if self.player_left_score == MAX_POINTS else "right"} won!", True, WHITE)
+            left_str = "left"
+            right_str = "right"
+            winner_str = left_str if self.player_left_score == MAX_POINTS else right_str
+            result_str = "Player " + winner_str + " won!"
+            game_result = self.font.render(result_str, True, WHITE)
             screen.blit(game_result, ((WIDTH // 2) - (game_result.get_width() // 2), (HEIGHT // 2) - (game_result.get_height() // 2)))
 
         pygame.display.flip()
